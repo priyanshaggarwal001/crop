@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIT Bhopal - Project Exhibition</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6)
+        ),
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5em;
+      color: #00ffcc;
+      margin-bottom: 10px;
+      animation: slideIn 1.8s ease;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 40px;
+      animation: slideIn 2s ease;
+      color: #ffffff;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing {
+      color: #00ffcc;
+      font-size: 1.4em;
+      margin-top: 20px;
+      font-weight: 600;
+      min-height: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 2.5s ease-in-out;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #1abc9c, #16a085);
+      border: none;
+      padding: 18px 50px;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #16a085, #1abc9c);
+      transform: scale(1.07);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.4em; }
+      h2 { font-size: 1.3em; }
+      .btn { font-size: 16px; padding: 14px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Heading and Subheading -->
+  <h1>VIT Bhopal</h1>
+  <h2>Project Exhibition - II</h2>
+
+  <!-- Typing Animation -->
+  <div class="typing" id="typingText"></div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <!-- Button linking to Project 1 (Crop Based Recommendation System) -->
+    <button class="btn" onclick="location.href='http://localhost:5001/'">Crop Based Recommendation System</button>
+    
+    <!-- Button linking to Project 2 (Crop Yield Prediction) -->
+    <button class="btn" onclick="location.href='http://localhost:5002/'">Crop Yield Prediction</button>
+  </div>
+
+  <!-- JavaScript: Typing Animation -->
+  <script>
+    const textArray = [
+      "Predicting the Crop based on Conditions",
+      "Agriculture with Machine Learning"
+    ];
+
+    let currentText = 0;
+    let charIndex = 0;
+    const typingElement = document.getElementById("typingText");
+
+    function type() {
+      if (charIndex < textArray[currentText].length) {
+        typingElement.textContent += textArray[currentText].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 70);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typingElement.textContent = textArray[currentText].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 30);
+      } else {
+        currentText = (currentText + 1) % textArray.length;
+        setTimeout(type, 500);
+      }
+    }
+
+    window.onload = type;
+  </script>
+
+</body>
+</html>
